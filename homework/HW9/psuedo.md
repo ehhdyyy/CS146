@@ -12,9 +12,10 @@
 ***
 
 ```
-- LCAofTwoNodes returns TreeNode
-- Three parameters: root, p, q
-- Recursively traverse binary tree until current node is between both p and q
+Notes:
+    - LCAofTwoNodes returns TreeNode
+    - Three parameters: root, p, q
+    - Recursively traverse binary tree until current node is between both p and q
 
 Method/Function:
     Base Case: If root is null, return null
