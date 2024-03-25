@@ -5,11 +5,11 @@ tree = TreeNode
 def inverseTree(self,root):
     if root == None:
         return root
-    temp = TreeNode
     temp = root.left
     root.left = root.right
-    root.right = root.left
-    return root
+    root.right = temp
+    inverseTree(self,root.left)
+    inverseTree(self,root.right)
 
 def inOrder(self,root):
     if root == None:
