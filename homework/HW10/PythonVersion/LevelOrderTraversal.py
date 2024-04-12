@@ -1,5 +1,5 @@
 from typing import List, Optional
-import TreeNode
+from TreeNode import TreeNode 
 
 tree = TreeNode     #Variable to use TreeNode defs
 
