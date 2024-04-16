@@ -32,16 +32,16 @@ public class FinishPrereq {
         }
 
         while(!q.isEmpty()){
-            int i = q.poll();   //Store and remove head of queue
+            int headOfQueue = q.poll();   //Store and remove head of queue
 
-            for(int j = 0;adjList[i] != null && j < adjList[i].size(); j++){     //Access every outdegree of i, stored in adjList[i]
-                int x = adjList[i].get(j);      
+            for(int index = 0;adjList[headOfQueue] != null && index < adjList[headOfQueue].size(); index++){     //Access every outdegree of i, stored in adjList[i]
+                int currValue = adjList[headOfQueue].get(index);      
 
-                freq[x]--;  //Decrement indegree for x
+                freq[currValue]--;  //Decrement indegree for x
 
-                if(freq[x] == 0){       //If no indegree, add to queue
+                if(freq[currValue] == 0){       //If no indegree, add to queue
+                    q.offer(currValue);
                     count++;
-                    q.offer(x);
                 }
             }
         }

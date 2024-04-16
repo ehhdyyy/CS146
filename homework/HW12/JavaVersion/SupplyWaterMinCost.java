@@ -4,7 +4,6 @@ import java.util.*;
 
 public class SupplyWaterMinCost {
     
-    @SuppressWarnings("unchecked")
     public int minCostToSupplyWater(int n, int[] wells, int[][] pipes) {
 
         return 0;

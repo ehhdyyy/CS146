@@ -3,8 +3,8 @@ from collections import deque
 class Prereq:
     
     def canFinish(numCourses, prerequisites):
-        adjList = [[] for _ in range(numCourses)]
-        freq = [0] * numCourses
+        adjList = [[] for _ in range(numCourses)] #Creates empty arrays for # of courses
+        freq = [0] * numCourses     #Creates array of numCourses length with values set to 0
         count = 0
 
         for prerequisite in prerequisites:
@@ -13,19 +13,19 @@ class Prereq:
         
         q = deque()
         for i in range(numCourses):
-            if freq[i] is 0:
+            if freq[i] == 0:
                 q.append(i)
                 count += 1
         
         while q:
-            i = q.popleft()
+            headOfQueue = q.popleft()
 
-            for x in adjList[i]:
-                freq[x] -= 1
+            for currValue in adjList[headOfQueue]:
+                freq[currValue] -= 1
                 
-                if freq[x] == 0:
-                    count += 1
-                    q.append(x)
+                if freq[currValue] == 0:
+                    q.append(currValue)
+                    
                 
         return count == numCourses
 
