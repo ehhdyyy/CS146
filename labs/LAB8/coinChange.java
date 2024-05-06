@@ -3,28 +3,34 @@ import java.util.*;
 
 public class coinChange {
     
-    public int coinChange(int[] coins, int amount) {
-        int count = 0;
-        int coinsLength = coins.length - 1;
+    public int coinChanges(int[] coins, int amount) {
+        
         Arrays.sort(coins);
 
-        if(amount % coins[coinsLength] == 0){
-            return amount / coins[coinsLength];
-        }
-        if(amount < coins[0]){
-            return -1;
-        }
+        int[] minCoinsPerAmount = new int[amount + 1];
+        Arrays.fill(minCoinsPerAmount, Integer.MAX_VALUE);
+        minCoinsPerAmount[0] = 0;
 
-        while(amount != 0){
-            
+        for(int i = 1; i <= amount; i++){
+            for(int c : coins){
+                if(i - c < 0){
+                    break;
+                }
+                if(minCoinsPerAmount[i-c] != Integer.MAX_VALUE){
+                    minCoinsPerAmount[i] = Math.min(minCoinsPerAmount[i], minCoinsPerAmount[i-c] + 1);
+                }
+            }
         }
-        return count;
+        return minCoinsPerAmount[amount] != Integer.MAX_VALUE ? minCoinsPerAmount[amount] : -1;
+
     }
 
     public static void main(String[] args) {
-        int[] coins = {1,2,5};
-        int amount = 11;
-
-
+        int[] coins = {3,2,5,10};
+        int amount = 13;
+        
+        coinChange test = new coinChange();
+        System.out.println("Minimum Coins: " + test.coinChanges(coins,amount));
     }
 }
+
